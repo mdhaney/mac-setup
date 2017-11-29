@@ -7,7 +7,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 #install command-line tools
-xcode-select --install
+#xcode-select --install
 
 # install homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -15,9 +15,3 @@ xcode-select --install
 #install ansible
 sudo easy_install pip
 sudo pip install ansible
-
-#install ansible roles
-ansible-galaxy install -r requirements.yml
-
-# run ansible
-ansible-playbook main.yml -i inventory -K

@@ -28,7 +28,8 @@ sudo pip install ansible
 git clone https://github.com/mdhaney/mac-setup.git /Users/Shared/mac-setup
 
 # run config
-/Users/Shared/mac-setup/config.sh
+cd /Users/Shared/mac-setup
+./config.sh
 
 
 

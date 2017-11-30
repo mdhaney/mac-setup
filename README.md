@@ -3,7 +3,7 @@
 Scripts and notes for bootstrapping a new Mac with multiple accounts (I use separate accounts for work, personal, consulting, etc.).  
 
 ## Bootstrap
-Start with a clean install of OSX and go through the installation wizard as usual (set iCloud ID, etc.) for one of your accounts.  Then download the bootstrap script and execute it from the command line.  This does the following:
+Start with a clean install of OSX and go through the installation wizard as usual (set iCloud ID, etc.) for one of your accounts.  Then download the [bootstrap script](https://raw.githubusercontent.com/mdhaney/mac-setup/master/bootstrap.sh) and execute it from the command line.  This does the following:
 - installs the Xcode command-line tools (needed by just about everything else)
 - installs ansible
 - creates a 'brew' group and installs homebrew

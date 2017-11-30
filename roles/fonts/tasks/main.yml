@@ -9,10 +9,10 @@
     name: "{{ item }}"
     state: present
     install_options: 'fontdir=/Library/Fonts'
-  with_items: system_fonts
+  with_items: "{{ system_fonts }}"
 
 - name: Install user fonts
   homebrew_cask:
     name: "{{ item }}"
     state: present
-  with_items: user_fonts
+  with_items: "{{ user_fonts }}"

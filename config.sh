@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git pull origin master
+
 #install ansible roles
 #ansible-galaxy install -r requirements.yml
 

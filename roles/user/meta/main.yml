@@ -1,0 +1,7 @@
+galaxy_info:
+  author: mdhaney
+  description: main user role
+  min_ansible_version: 1.2
+  galaxy_tags: []
+dependencies:
+  - fonts

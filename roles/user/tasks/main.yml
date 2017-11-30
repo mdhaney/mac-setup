@@ -1,0 +1,6 @@
+---
+- name: Say hi
+  osx_say:
+    - msg: 'User configuration completed'
+      voice: Samantha
+  delegate_to: localhost

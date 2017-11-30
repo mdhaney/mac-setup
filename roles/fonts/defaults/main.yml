@@ -1,0 +1,19 @@
+---
+# defaults file for fonts
+system_fonts:
+  - font-source-code-pro
+  - font-source-code-pro-for-powerline 
+  - font-source-sans-pro
+  - source-serif-pro 
+  - font-sourcecodepro-nerd-font 
+  - font-sourcecodepro-nerd-font-mono
+  - font-roboto 
+  - font-roboto-condensed 
+  - font-roboto-mono 
+  - font-roboto-mono-for-powerline
+  - font-roboto-slab
+  - font-robotomono-nerd-font
+  - font-robotomono-nerd-font-mono
+  - font-ionicons
+
+user_fonts: []

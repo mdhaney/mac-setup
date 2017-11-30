@@ -8,6 +8,8 @@
   roles: []
 
   tasks:
-    - name: Display all variables/facts known for a host
-      debug:
-        msg: "Hello there"
+    - name: Say hi
+      osx_say:
+        msg: 'Hello there'
+        voice: Samantha
+      delegate_to: localhost

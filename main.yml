@@ -5,6 +5,14 @@
   vars_files:
     - vars/main.yml
 
+  pre_tasks:
+    - stat: path="{{ playbook_dir }}/vars/{{ ansible_user_id }}.yml"
+      register: user_override
+
+    - include_vars:
+        file: "{{ ansible_user_id }}.yml"
+      when: user_override.stat.exists
+
   roles:
     - user
   

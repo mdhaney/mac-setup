@@ -8,7 +8,10 @@ Start with a clean install of OSX and go through the installation wizard as usua
 - installs ansible
 - creates a 'brew' group and installs homebrew
 - adjusts permissions so any user added to the brew group will be able to manage homebrew (all users can use brew packages, just not install or update)
-- clones the repo and runs Ansible for the current user
+- clones the repo and runs config.sh
+
+## Update config
+Whenever you want to update, just run config.sh.  It will pull the latest changes from Git and apply any new configuration to the current user.  Each time it runs, it will prompt for the sudo password up front, as well as the vault password (see Security section).
 
 ## Creating users
 Use the *System Preferences - Users and Groups* pane to create users as usual, then login as the new user and follow the wizard to configure iCloud, etc.  Once completed, in a terminal do the following:
@@ -20,4 +23,9 @@ A default configuration will be used to configure the user, but this can be over
 
 
 ## Documentation
-TODO - Notes about the various modules and their most common customizations.
+Each of the roles has their own documentation, including which variables can be overridden
+
+## Security
+I use 1Password already to manage passwords, so it made sense to use it as well to store API keys, SSH keys, software licenses, etc.  Whenever the scripts require this information, they retrieve it from 1Password's cloud service using their command-line utility.
+
+BUT - there is sensitive information required to login to 1Password in the first place, which I would rather not have to type every time I update.  So this information is encrypted using Ansible Vault.

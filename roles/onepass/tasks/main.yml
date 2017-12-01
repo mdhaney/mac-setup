@@ -1,0 +1,17 @@
+---
+- name: Install UI
+  homebrew_cask:
+    name: 1password
+    state: present
+
+- name: Install command line
+  homebrew_cask:
+    name: 1password-cli
+    state: present
+
+- name: Get a session token
+  command: op signin {{ onepass_subdomain|quote }} {{ onepass_email|quote}} {{ onepass_key|quote }} {{ onepass_master_pass|quote }} --output=raw
+  register: onepass_session_token
+
+- debug:
+    var: onepass_session_token.stdout

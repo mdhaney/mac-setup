@@ -10,6 +10,14 @@
         file: "{{ playbook_dir }}/users/{{ ansible_user_id }}.yml"
       when: user_override.stat.exists
 
+    - stat: path="{{ playbook_dir }}/secrets.yml"
+      register: vault_file
+
+    - include_vars:
+        file: "{{ playbook_dir }}/secrets.yml"
+      when: vault_file.stat.exists
+
   roles:
-    - user
+    - onepass
+#    - user
   

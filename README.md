@@ -11,7 +11,7 @@ Start with a clean install of OSX and go through the installation wizard as usua
 - clones the repo and runs config.sh
 
 ## Update config
-Whenever you want to update, just run config.sh.  It will pull the latest changes from Git and apply any new configuration to the current user.  Each time it runs, it will prompt for the sudo password up front, and possibly your 1Password info (see Security section).
+Whenever you want to update, just run config.sh.  It will pull the latest changes from Git and apply any new configuration to the current user.  Each time it runs, it will prompt for the sudo password up front and your Ansible vault password (see Security section).
 
 ## Creating users
 Use the *System Preferences - Users and Groups* pane to create users as usual, then login as the new user and follow the wizard to configure iCloud, etc.  Once completed, in a terminal do the following:
@@ -28,4 +28,4 @@ Each of the roles has their own documentation, including which variables can be 
 ## Security
 I use 1Password already to manage passwords, so it made sense to use it as well to store API keys, SSH keys, software licenses, etc.  Whenever the scripts require this information, they retrieve it from 1Password's cloud service using their command-line utility.
 
-The first time the configuration runs, it will prompt you for all the 1Password information, including the secret key.  After the initial run, you will only have to enter the password when accessing 1Password.
+The 1Password parameters (Secret Key, Subdomain, Email, Master-Password) are stored in an encrypted Ansible vault.  See the README for the 'onepass' role for info on how to set these parameters for your own 1Password account.

@@ -1,0 +1,6 @@
+---
+- name: Install quicklook plugins
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ quicklook_plugins }}"

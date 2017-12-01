@@ -1,0 +1,10 @@
+---
+- name: Tap cask
+  homebrew_tap:
+    name: caskroom/versions
+    state: present
+
+- name: Install Java
+  homebrew_cask:
+    name: 'java8'
+    state: present

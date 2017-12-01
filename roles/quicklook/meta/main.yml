@@ -1,0 +1,7 @@
+galaxy_info:
+  author: mdhaney
+  description: quicklook
+  min_ansible_version: 2.2
+  galaxy_tags: []
+dependencies: 
+  - homebrew_cask

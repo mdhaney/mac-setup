@@ -1,0 +1,18 @@
+---
+user_msg: "User configuration completed"
+
+profile_lines:
+  - PS1='\[\033[01;32m\]\u\[\033[01;34m\] \[\033[00;34m\]{ \[\033[01;34m\]\w \[\033[00;34m\]}\[\033[01;32m\]-> \[\033[00m\]'
+
+profile_paths:
+  - '/usr/local/sbin'
+
+profile_aliases:
+  - alias: 'la'
+    command: 'll -a'
+  - alias: 'll'
+    command: 'ls -lh'
+  - alias: 'ls'
+    command: 'ls -G'
+
+profile_exports: []

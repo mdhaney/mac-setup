@@ -1,6 +1,6 @@
 galaxy_info:
   author: mdhaney
-  description: main user role
+  description: build a user profile
   min_ansible_version: 2.2
   galaxy_tags: []
 dependencies:

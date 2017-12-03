@@ -1,2 +1,5 @@
 ---
 # defaults file for java8
+java_export:
+  - var: 'JAVA_HOME'
+    val: '$(/usr/libexec/java_home)'

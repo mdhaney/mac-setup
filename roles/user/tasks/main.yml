@@ -1,9 +1,0 @@
----
-- name: Say completed
-  osx_say:
-    msg: "{{ user_msg }}"
-    voice: Samantha
-  delegate_to: localhost
-
-- debug:
-    msg: "user id is {{ ansible_user_id }}"

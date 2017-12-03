@@ -18,6 +18,15 @@
       when: vault_file.stat.exists
 
   roles:
-    - onepass
-#    - user
+    - profile
+
+  tasks:
+    - debug:
+        var: bash_lines
+    - debug:
+        var: bash_aliases
+    - debug:
+        var: bash_paths
+    - debug:
+        var: bash_exports
   

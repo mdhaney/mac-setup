@@ -8,3 +8,13 @@
   homebrew_cask:
     name: 'java8'
     state: present
+
+- name: Make sure the bash_exports array exists
+  set_fact:
+    bash_exports: []
+  when: bash_exports is undefined
+
+- name: Add JAVA_HOME to exports
+  set_fact:
+    bash_exports: "{{ bash_exports }} + {{ java_export }}"
+

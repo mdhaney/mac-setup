@@ -1,0 +1,77 @@
+---
+- name: Make sure the bash_aliases array exists
+  set_fact:
+    bash_aliases: []
+  when: bash_aliases is undefined
+
+- name: Add role defaults for aliases
+  set_fact:
+    bash_aliases: "{{ bash_aliases }} + {{ profile_aliases }}"
+
+- name: Make sure the bash_paths array exists
+  set_fact:
+    bash_paths: []
+  when: bash_paths is undefined
+
+- name: Add role defaults for paths
+  set_fact:
+    bash_paths: "{{ bash_paths }} + {{ profile_paths }}"
+
+- name: Make sure the bash_exports array exists
+  set_fact:
+    bash_exports: []
+  when: bash_exports is undefined
+
+- name: Add role defaults for exports
+  set_fact:
+    bash_exports: "{{ bash_exports }} + {{ profile_exports }}"
+
+- name: Make sure the bash_lines array exists
+  set_fact:
+    bash_lines: []
+  when: bash_lines is undefined
+
+- name: Add role defaults for profile lines
+  set_fact:
+    bash_lines: "{{ bash_lines }} + {{ profile_lines }}"
+
+- set_fact:
+    bash_lines: "{{ bash_lines }} + [ '' ]"
+
+- name: Add aliases to bash_lines
+  set_fact:
+    bash_lines: "{{ bash_lines }} + [ 'alias {{ item.alias }}=\"{{ item.command }}\"' ]"
+  with_items: "{{ bash_aliases }}"
+
+- set_fact:
+    bash_lines: "{{ bash_lines }} + [ '' ]"
+
+- name: Add exports to bash_lines
+  set_fact:
+    bash_lines: "{{ bash_lines }} + [ 'export {{ item.var }}=\"{{ item.val }}\"' ]"
+  with_items: "{{ bash_exports }}"
+
+- set_fact:
+    bash_lines: "{{ bash_lines }} + [ '' ]"
+
+- set_fact:
+    bash_paths: "{{ bash_paths }} + [ '$PATH' ]"
+
+- name: Add path to bash_lines
+  set_fact:
+    bash_lines: "{{ bash_lines }} + [ 'export PATH=\"{{ bash_paths | join(':') }}\"' ]"
+
+- name: Write bash profile
+  copy:
+    dest: "/Users/{{ ansible_user_id }}/.bash_profile"
+    owner: "{{ ansible_user_id }}"
+    group: staff
+    mode: 0644
+    backup: no
+    content: "{{ bash_lines | join('\n') }}"
+
+- name: Say completed
+  osx_say:
+    msg: "{{ user_msg }}"
+    voice: Samantha
+  delegate_to: localhost

@@ -12,6 +12,29 @@
 - name: Get a session token
   command: op signin {{ onepass_subdomain|quote }} {{ onepass_email|quote}} {{ onepass_key|quote }} {{ onepass_master_pass|quote }} --output=raw
   register: onepass_session_token
+- set_fact:
+    onepass_session_token: "{{ onepass_session_token.stdout }}"
 
-- debug:
-    var: onepass_session_token.stdout
+- name: Create temp folder
+  tempfile:
+    prefix: _ansible
+    state: directory
+  register: onepass_temp_dir
+- set_fact:
+    onepass_temp_dir: "{{ onepass_temp_dir.path }}"
+
+# - debug:
+#     var: onepass_temp_dir
+# - pause:
+
+- name: List vault documents
+  command: op list documents --vault={{ onepass_vault }} --session={{ onepass_session_token }}
+  register: doc_list
+- set_fact:
+    doc_uuids: []
+- set_fact:
+    doc_uuids: "{{ doc_uuids }} + [ '{{ item.uuid }}' ]"
+  with_items: "{{ doc_list.stdout }}"
+
+- include: download.yml doc_uuid="{{ item }}"
+  with_items: "{{ doc_uuids }}"

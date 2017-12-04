@@ -18,15 +18,13 @@
       when: vault_file.stat.exists
 
   roles:
-    - profile
+    # - profile
+    - onepass
 
   tasks:
-    - debug:
-        var: bash_lines
-    - debug:
-        var: bash_aliases
-    - debug:
-        var: bash_paths
-    - debug:
-        var: bash_exports
-  
+    - pause:
+    - name: cleanup temp files
+      file:
+        path: "{{ onepass_temp_dir }}"
+        state: absent
+      when: onepass_temp_dir is defined

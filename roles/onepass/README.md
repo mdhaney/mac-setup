@@ -1,7 +1,7 @@
 onepass
 =========
 
-1Password integration
+1Password integration.  Logs into 1Password and stores the session token as 'onepass_session_token' for later use.  If a vault name is specified, all the documents in that vault will be downloaded to a temporary directory which can be accessed as 'onepass_temp_dir'
 
 Role Variables
 --------------
@@ -10,6 +10,7 @@ onepass_subdomain: "haneyfamily"
 onepass_email: "txmikester@gmail.com"
 onepass_key: XXXXXXXXX
 onepass_master_pass: XXXXX
+onepass_vault
 
 Customization
 -------------

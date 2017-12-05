@@ -36,5 +36,5 @@
     doc_uuids: "{{ doc_uuids }} + [ '{{ item.uuid }}' ]"
   with_items: "{{ doc_list.stdout }}"
 
-- include: download.yml doc_uuid="{{ item }}"
+- include_tasks: download.yml doc_uuid="{{ item }}"
   with_items: "{{ doc_uuids }}"

@@ -1,0 +1,3 @@
+---
+# settings for account 'media' (media editing account)
+onepass_vault: "ansible.media"

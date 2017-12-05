@@ -1,0 +1,24 @@
+---
+- set_fact:
+    src_public_path: "{{ onepass_temp_dir }}/{{ ssh_public_source }}"
+- set_fact:
+    src_private_path: "{{ onepass_temp_dir }}/{{ ssh_private_source }}"
+
+- name: Check for keys in 1Pass
+  stat: 
+    path: "{{ src_public_path }}"
+  register: src_public
+- stat: 
+    path: "{{ src_private_path }}"
+  register: src_private
+
+- include_tasks: keycopy.yml
+  when: src_private.stat.exists and src_public.stat.exists
+
+- name: Generate SSH keys
+  user:
+    name: "{{ ansible_user_id }}"
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+  when: (src_private.stat.exists == False) or (src_public.stat.exists == False)

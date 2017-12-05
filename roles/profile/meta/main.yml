@@ -7,3 +7,4 @@ dependencies:
   - fonts
   - quicklook
   - java8
+  - ssh

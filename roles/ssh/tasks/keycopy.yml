@@ -1,0 +1,45 @@
+---
+- set_fact:
+    user_ssh_dir: "/Users/{{ ansible_user_id }}/.ssh/"
+
+- name: Create .ssh folder
+  file:
+    path: "{{ user_ssh_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Copy public key
+  copy:
+    src: "{{ src_public_path }}"
+    dest: "{{ user_ssh_dir }}/id_rsa.pub"
+    owner: "{{ ansible_user_id }}"
+    group: staff
+    mode: 0644
+
+- name: Copy private key
+  copy:
+    src: "{{ src_private_path }}"
+    dest: "{{ user_ssh_dir }}/id_rsa"
+    owner: "{{ ansible_user_id }}"
+    group: staff
+    mode: 0600
+
+- set_fact:
+    src_knownhosts_path: "{{ onepass_temp_dir }}/{{ ssh_knownhosts_source }}"
+
+- name: Check for known hosts file
+  stat: 
+    path: "{{ src_knownhosts_path }}"
+  register: src_knownhosts
+
+- name: Copy known hosts file
+  copy:
+    src: "{{ src_knownhosts_path }}"
+    dest: "{{ user_ssh_dir }}/known_hosts"
+    owner: "{{ ansible_user_id }}"
+    group: staff
+    mode: 0644
+  when: src_knownhosts.stat.exists
+  
+
+

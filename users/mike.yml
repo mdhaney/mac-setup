@@ -1,4 +1,7 @@
 ---
-# defaults file for user
-user_msg: "Mike, your account is configured"
-onepass_vault: "Ansible"
+# settings for account 'mike' (personal account)
+onepass_vault: "ansible.mike"
+
+ssh_public_source: 'mike_public'
+ssh_private_source: 'mike_private'
+ssh_knownhosts_source: 'mike_known_hosts'

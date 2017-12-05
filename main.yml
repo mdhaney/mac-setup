@@ -18,11 +18,9 @@
       when: vault_file.stat.exists
 
   roles:
-    # - profile
-    - onepass
+    - profile
 
   tasks:
-    - pause:
     - name: cleanup temp files
       file:
         path: "{{ onepass_temp_dir }}"

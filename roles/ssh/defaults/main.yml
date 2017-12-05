@@ -1,0 +1,5 @@
+---
+# defaults file for ssh
+ssh_public_source: 'id_rsa.pub'
+ssh_private_source: 'id_rsa'
+ssh_knownhosts_source: 'known_hosts'

@@ -8,3 +8,4 @@ dependencies:
   - quicklook
   - java8
   - ssh
+  - git

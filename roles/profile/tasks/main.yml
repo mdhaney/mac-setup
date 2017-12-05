@@ -67,7 +67,7 @@
     owner: "{{ ansible_user_id }}"
     group: staff
     mode: 0644
-    backup: no
+    backup: yes
     content: "{{ bash_lines | join('\n') }}"
 
 - name: Say completed

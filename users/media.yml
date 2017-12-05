@@ -1,3 +1,6 @@
 ---
 # settings for account 'media' (media editing account)
 onepass_vault: "ansible.media"
+
+git_user_name: "Mike Haney"
+git_user_email: "txmikester@gmail.com"

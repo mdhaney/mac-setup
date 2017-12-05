@@ -1,3 +1,6 @@
 ---
 # settings for account 'mike.haney' (singlewire account)
 onepass_vault: "ansible.mike.haney"
+
+git_user_name: "Mike Haney"
+git_user_email: "mike.haney@singlewire.com"

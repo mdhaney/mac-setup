@@ -19,6 +19,7 @@
 
   roles:
     - profile
+    # - git
 
   tasks:
     - name: cleanup temp files

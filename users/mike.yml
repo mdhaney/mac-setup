@@ -5,3 +5,6 @@ onepass_vault: "ansible.mike"
 ssh_public_source: 'mike_public'
 ssh_private_source: 'mike_private'
 ssh_knownhosts_source: 'mike_known_hosts'
+
+git_user_name: "Mike Haney"
+git_user_email: "txmikester@gmail.com"

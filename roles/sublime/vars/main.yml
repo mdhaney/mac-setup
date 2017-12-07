@@ -1,0 +1,10 @@
+---
+sublime_package_control_url: "https://packagecontrol.io/Package%20Control.sublime-package"
+sublime_export:
+  - var: 'EDITOR'
+    val: 'subl -w'
+sublime_dir: "{{ user_home_dir }}/Library/Application\ Support/Sublime\ Text\ 3"
+sublime_config_dir: "{{ sublime_dir }}/Packages/User"
+sublime_license_dir: "{{ sublime_dir }}/Local"
+sublime_package_dir: "{{ sublime_dir }}/Installed\ Packages"
+

@@ -1,0 +1,54 @@
+---
+- name: Install sublime text
+  homebrew_cask:
+    name: sublime-text
+    state: present
+
+- name: make sure license dir exists
+  file:
+    path: "{{ sublime_license_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Install license file
+  copy:
+    dest: "{{ sublime_license_dir }}/License.sublime_license"
+    src: "{{ onepass_temp_dir }}/{{ sublime_license_source }}"
+
+- name: make sure package dir exists
+  file:
+    path: "{{ sublime_package_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Install package control
+  get_url:
+    url: "{{ sublime_package_control_url }}"
+    dest: "{{ sublime_package_dir }}/Package\ Control.sublime-package"
+
+- name: make sure config dir exists
+  file:
+    path: "{{ sublime_config_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Install user config
+  copy:
+    dest: "{{ sublime_config_dir }}/Preferences.sublime-settings"
+    src: "{{ onepass_temp_dir }}/{{ sublime_config_source }}"
+
+- name: Make sure the bash_exports array exists
+  set_fact:
+    bash_exports: []
+  when: bash_exports is undefined
+
+- name: Set Sublime as Bash default editor
+  set_fact:
+    bash_exports: "{{ bash_exports }} + {{ sublime_export }}"
+
+- name: Configure Git to use Sublime
+  git_config:
+    name: core.editor
+    scope: global
+    value: subl -n -w 
+

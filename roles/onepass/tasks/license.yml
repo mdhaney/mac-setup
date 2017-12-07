@@ -1,7 +1,4 @@
 ---
-- debug: msg="processing software license"
-- debug: var=license_item
-
 - name: determine download file name
   set_fact: doc_output="{{ onepass_temp_dir }}/{{ license_item.overview.title }}"
 

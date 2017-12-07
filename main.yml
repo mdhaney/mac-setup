@@ -3,6 +3,9 @@
   connection: local
 
   pre_tasks:
+    - set_fact:
+        user_home_dir: "/Users/{{ansible_user_id}}"
+        
     - stat: path="{{ playbook_dir }}/users/{{ ansible_user_id }}.yml"
       register: user_override
 
@@ -19,7 +22,6 @@
 
   roles:
     - profile
-    # - onepass
 
   tasks:
     - name: cleanup temp files

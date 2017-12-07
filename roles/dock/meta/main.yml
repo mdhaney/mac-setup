@@ -1,0 +1,6 @@
+galaxy_info:
+  author: mdhaney
+  description: dock
+  min_ansible_version: 2.2
+  galaxy_tags: []
+dependencies: [] 

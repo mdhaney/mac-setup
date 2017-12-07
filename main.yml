@@ -21,7 +21,8 @@
       when: vault_file.stat.exists
 
   roles:
-    - profile
+    # - profile
+    - dock
 
   tasks:
     - name: cleanup temp files

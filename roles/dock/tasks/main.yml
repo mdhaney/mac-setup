@@ -1,0 +1,79 @@
+---
+- name: Install dockutil
+  homebrew:
+    name: dockutil
+    state: present
+
+- name: Set autohide
+  osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    state: present
+    type: bool
+    value: "{{ dock_autohide }}"
+    
+- name: Set autohide delay
+  osx_defaults:
+    domain: com.apple.dock
+    key: autohide-delay
+    state: present
+    type: float
+    value: "{{ dock_autohide_delay }}"
+  when: dock_autohide
+
+- name: Set orientation
+  osx_defaults:
+    domain: com.apple.dock
+    key: orientation
+    state: present
+    type: string
+    value: "{{ dock_orientation }}"
+  when: dock_orientation in ["left", "right", "bottom"]
+    
+- name: Set tile size
+  osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    state: present
+    type: float
+    value: "{{ dock_tilesize }}"
+
+- name: Set spring loading
+  osx_defaults:
+    domain: com.apple.dock
+    key: enable-spring-load-actions-on-all-items
+    state: present
+    type: bool
+    value: "{{ dock_springload }}"
+
+- name: Set magnification
+  osx_defaults:
+    domain: com.apple.dock
+    key: magnification
+    state: present
+    type: bool
+    value: "{{ dock_magnification }}"
+    
+- name: Set magnification tile size
+  osx_defaults:
+    domain: com.apple.dock
+    key: largesize
+    state: present
+    type: float
+    value: "{{ dock_largesize }}"
+  when: dock_magnification
+
+- name: Remove all crap from Dock
+  shell: dockutil --remove '{{ item }}'
+  ignore_errors: true
+  with_items: dock_remove_items
+ 
+# - name: Check if items in dock exist
+#   shell: dockutil --find '{{ item.name }}' || dockutil --add '{{ item.path }}'
+#   with_items: dock_add_items
+ 
+# - name: Fix order
+#   shell: dockutil --move '{{ item.name }}' --position {{ item.pos }}
+#   with_items: dock_add_items  
+
+

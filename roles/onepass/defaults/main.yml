@@ -4,4 +4,4 @@ onepass_email: "{{ vault_1pass_email }}"
 onepass_key: "{{ vault_1pass_key }}"
 onepass_master_pass: "{{ vault_1pass_master }}"
 
-onepass_vault: ""
+onepass_vault: "ansible"

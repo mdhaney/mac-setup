@@ -27,14 +27,14 @@
 #     var: onepass_temp_dir
 # - pause:
 
-- name: List vault documents
-  command: op list documents --vault={{ onepass_vault }} --session={{ onepass_session_token }}
-  register: doc_list
-- set_fact:
-    doc_uuids: []
-- set_fact:
-    doc_uuids: "{{ doc_uuids }} + [ '{{ item.uuid }}' ]"
-  with_items: "{{ doc_list.stdout }}"
 
-- include_tasks: download.yml doc_uuid="{{ item }}"
-  with_items: "{{ doc_uuids }}"
+- name: List items in the vault
+  command: op list items --vault={{ onepass_vault }} --session={{ onepass_session_token }}
+  register: item_list
+
+- name: Filter items tagged with user-id
+  include_tasks: download.yml onepass_item="{{ outer_item }}"
+  when: ansible_user_id in outer_item.overview.tags
+  with_items: "{{ item_list.stdout }}"
+  loop_control:
+    loop_var: outer_item

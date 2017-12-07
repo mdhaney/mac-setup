@@ -1,7 +1,11 @@
 onepass
 =========
 
-1Password integration.  Logs into 1Password and stores the session token as 'onepass_session_token' for later use.  If a vault name is specified, all the documents in that vault will be downloaded to a temporary directory which can be accessed as 'onepass_temp_dir'
+1Password integration.  Logs into 1Password and stores the session token as 'onepass_session_token' for later use.  If a vault name is specified, all the documents tagged with the user id for the current user will be downloaded from that vault to a temporary directory which can be accessed as 'onepass_temp_dir'
+
+Item types will be handled as follows:
+- Documents: the document is downloaded, filename is set by the 'title' field
+- Software Licenses: the license-key field will be downloaded, filename is set by the 'title' field
 
 Role Variables
 --------------

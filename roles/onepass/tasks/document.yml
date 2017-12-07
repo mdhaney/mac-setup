@@ -1,0 +1,12 @@
+---
+- name: determine download file name
+  set_fact: doc_output="{{ onepass_temp_dir }}/{{ document_item.overview.title }}"
+
+- name: Download document
+  command: op get document {{ document_item.uuid }} --vault={{ onepass_vault }} --session={{ onepass_session_token }}
+  register: download_result
+
+- name: Save document
+  copy:
+    dest: "{{ doc_output }}"
+    content: "{{ download_result.stdout }}"

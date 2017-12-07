@@ -1,15 +1,9 @@
 ---
-- name: Get doc info
-  command: op get item {{ doc_uuid }} --vault={{ onepass_vault }} --session={{ onepass_session_token }}
-  register: doc_info
-- set_fact: doc_info="{{ doc_info.stdout | from_json }}"
-- set_fact: doc_output="{{ onepass_temp_dir }}/{{ doc_info.details.documentAttributes.fileName}}"
+# process each item based on category
+- name: Process 'document' category
+  include_tasks: document.yml document_item="{{ onepass_item }}"
+  when: onepass_item.templateUuid == onepass_category_document
 
-- name: Download document
-  command: op get document {{ doc_uuid }} --vault={{ onepass_vault }} --session={{ onepass_session_token }}
-  register: download_result
-
-- name: Save document
-  copy:
-    dest: "{{ doc_output }}"
-    content: "{{ download_result.stdout }}"
+- name: Process 'software license' category
+  include_tasks: license.yml license_item="{{ onepass_item }}"
+  when: onepass_item.templateUuid == onepass_category_license

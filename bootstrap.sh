@@ -23,6 +23,7 @@ sudo chmod -R g+w /usr/local/bin /usr/local/etc /usr/local/include /usr/local/li
 # install ansible
 sudo easy_install pip
 sudo pip install ansible
+sudo pip install jmespath
 
 # clone the config repo
 git clone https://github.com/mdhaney/mac-setup.git /Users/Shared/mac-setup

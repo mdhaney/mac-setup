@@ -1,0 +1,25 @@
+---
+- debug: msg="processing software license"
+- debug: var=license_item
+
+- name: determine download file name
+  set_fact: doc_output="{{ onepass_temp_dir }}/{{ license_item.overview.title }}"
+
+- name: Get license item details
+  command: op get item {{ license_item.uuid }} --vault={{ onepass_vault }} --session={{ onepass_session_token }}
+  register: download_result
+
+- set_fact:
+    item_details: "{{ download_result.stdout }}"
+
+- name: Extract the license key field
+  set_fact:
+    license_key: "{{ item.v }}"
+  with_items: "{{ item_details.details | json_query('sections[*].fields[*]') }}"
+  when: (item.v is defined) and (item.n == "reg_code")
+
+- name: Save document
+  copy:
+    dest: "{{ doc_output }}"
+    content: "{{ license_key }}"
+  when: license_key is defined

@@ -13,41 +13,30 @@ dock_orientation: "left"
 dock_springload: true
 
 dock_remove_items:
-  # - Launchpad
-  - Mail
+  - Siri
+  - Launchpad
   - Safari
+  - Mail
   - Contacts
+  - Calendar
   - Notes
   - Reminders
   - Maps
-  # - Photos
-  # - Messages
+  - Photos
+  - Messages
   - FaceTime
   - iTunes
   - iBooks
   - App Store
   - System Preferences
-  - Calendar
 
 dock_add_items:
   - name: Terminal
-    path: /Applications/Utilities/Terminal.app
-    pos: 4
+    path: "/Applications/Utilities/Terminal.app"
+    pos: 1
+  - name: Sublime Text
+    path: "/Applications/Sublime\ Text.app"
+    pos: 2
   # - name: Google Chrome
-  #   path: "/Applications/Google Chrome.app"
-  #   pos: 1
-  # - name: Firefox
-  #   path: "/Applications/Firefox.app"
-  #   pos: 2
-  # - name: PhpStorm
-  #   path: /Applications/PhpStorm.app
+  #   path: "/Applications/Google\ Chrome.app"
   #   pos: 3
-  # - name: VirtualBox
-  #   path: /Applications/VirtualBox.app
-  #   pos: 5
-  # - name: Slack
-  #   path: /Applications/Slack.app
-  #   pos: 6
-  # - name: Spotify
-  #   path: /Applications/Spotify.app
-  #   pos: 7

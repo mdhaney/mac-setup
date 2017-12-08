@@ -2,15 +2,6 @@
 ## Intro
 Scripts and notes for bootstrapping a new Mac with multiple accounts (I use separate accounts for work, personal, consulting, etc.).
 
-## Why?
-There are a lot of playbooks and/or shell scripts out there for setting up Macs.  Why not use one of them?  There are a couple of reasons.  First, most of them assume a single user account, and don't work well with multiple users.  That doesn't work for me, as I have several accounts used to separate work from personal, etc.
-
-Second, I didn't like the design of any of them.  For example, most playbooks would just have a big list in a var file for which brew packages to install, or what NPM modules to install, etc.  That's fine, I guess, but to me it made more sense to package configuration by application, and use the power of Ansible roles and dependencies to manage the rest.
-
-For example, to use IntelliJ/Cursive requires Clojure, leiningen, git, etc.  Rather than remembering which NPM packages to install, which Brew packages, what needs to be added to the path in my bash profile, etc. - just package it all up into a coherent role.  IntelliJ requires Git, and when git is set as a dependency, then the IntelliJ role can assume that Git has been installed and configured already, and just focus on the steps needed to setup IntelliJ.  Git requires SSH keys, which require Bash, etc.
-
-This should make it easier to add and remove applications in a configuration without worrying about all the cross-cutting concerns.  I also hope it will make it easier to keep these configs up to date, IOW when I install a new app, just create a new role for it, set its dependencies, and focus on the few steps to get that app installed and configured - rather than hunting through the entire project to find all the references, dependencies, etc.  Finally, it should make it easier to support UN-install of applications - not supported yet, but already thinking about how to do it. ;)
-
 ## Bootstrap
 Start with a clean install of OSX and go through the installation wizard as usual (set iCloud ID, etc.) for one of your accounts.  Then download the [bootstrap script](https://raw.githubusercontent.com/mdhaney/mac-setup/master/bootstrap.sh) and execute it from the command line.  This does the following:
 - installs the Xcode command-line tools (needed by just about everything else)

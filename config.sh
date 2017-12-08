@@ -6,4 +6,4 @@ git pull origin master
 #ansible-galaxy install -r requirements.yml
 
 # run ansible
-ansible-playbook --ask-vault-pass main.yml -i inventory -K
+ansible-playbook --ask-vault-pass main.yml -i inventory

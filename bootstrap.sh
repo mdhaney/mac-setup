@@ -6,8 +6,8 @@ sudo -v
 # keep-alive sudo until script ends
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-#install command-line tools
-xcode-select --install
+#install command-line tools - homebrew install takes care of this
+# xcode-select --install
 
 #create brew group
 sudo dseditgroup -o create -n /Local/Default -r "Homebrew" brew

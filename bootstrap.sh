@@ -17,8 +17,8 @@ sudo dseditgroup -o edit -n /Local/Default -a $(whoami) -t user brew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # change homebrew permissions
-sudo chgrp -R brew /usr/local/bin /usr/local/etc /usr/local/include /usr/local/lib /usr/local/sbin /usr/local/share /usr/local/var /usr/local/Frameworks /usr/local/share/man /usr/local/opt
-sudo chmod -R g+w /usr/local/bin /usr/local/etc /usr/local/include /usr/local/lib /usr/local/sbin /usr/local/share /usr/local/var /usr/local/Frameworks /usr/local/share/man /usr/local/opt
+sudo chgrp -R brew /usr/local/bin /usr/local/etc /usr/local/include /usr/local/lib /usr/local/sbin /usr/local/share /usr/local/var /usr/local/Frameworks /usr/local/share/man /usr/local/opt /usr/local/Cellar /usr/local/Homebrew
+sudo chmod -R g+w /usr/local/bin /usr/local/etc /usr/local/include /usr/local/lib /usr/local/sbin /usr/local/share /usr/local/var /usr/local/Frameworks /usr/local/share/man /usr/local/opt /usr/local/Cellar /usr/local/Homebrew
 
 # install ansible
 sudo easy_install pip
